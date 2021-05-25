@@ -2,8 +2,10 @@ package kodlamaio.hrms.business.abstracts;
 
 import java.util.List;
 
+import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.entities.concretes.SystemWorker;
 
+
 public interface SystemWorkerService {
-	List<SystemWorker> getAll();
+	DataResult<List<SystemWorker>> getAll();
 }

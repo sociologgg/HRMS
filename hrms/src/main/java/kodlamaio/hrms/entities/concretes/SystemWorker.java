@@ -4,14 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity()
 @Table(name="systemworkers")
+@PrimaryKeyJoinColumn(name = "userid", referencedColumnName = "id")
 public class SystemWorker {
 
 	@Id
-	@GeneratedValue
 	@Column(name = "UserID")
 	private int id;
 	

@@ -8,18 +8,21 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name= "jobseekers")
-public class JobSeeker {
+@PrimaryKeyJoinColumn(name="userid",referencedColumnName = "id")
 
-	@Id
-	@GeneratedValue
-	@Column(name = "UserID")
-	private int id;
+
+public class JobSeeker extends User{
+	
+//	@Id
+//	@Column(name = "userid")
+//	private int id;
 
 	@Column(name = "FirstName")
 	private String firstName;
@@ -27,7 +30,7 @@ public class JobSeeker {
 	@Column(name = "LastName")
 	private String lastName;
 	
-	@Column(name="IdentityNumber")
+	@Column(name="IdentityNumber", unique = true)
 	private String identityNumber;
 	
 	@Column(name="BirthDate")
@@ -37,9 +40,8 @@ public class JobSeeker {
 	
 	public JobSeeker() {}
 
-	public JobSeeker(int id, String firstName, String lastName, String identityNumber,Date birthDate) {
+	public JobSeeker( String firstName, String lastName, String identityNumber,Date birthDate) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.identityNumber = identityNumber;
@@ -47,14 +49,7 @@ public class JobSeeker {
 		
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	
 	public String getFirstName() {
 		return firstName;
 	}

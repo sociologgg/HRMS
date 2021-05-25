@@ -1,18 +1,24 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "Users")
 
 public class User {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
 	private int id;
 
@@ -22,18 +28,27 @@ public class User {
 	@Column(name = "Password")
 	private String password;
 	
-	@Column(name="emailVerified")
-	private int emailVerified;
+	@Column(name = "password_repeat")
+	private String passwordRepeat;
+	
+	@Column(name = "created_date")
+	private LocalDate  createdDate;
+	
+	
+	
+
+	
+	
 	
 	
 	public User() {}
 
-	public User(int id, String email, String password, int emailVerified) {
+	public User(int id, String email, String password) {
 		super();
 		this.id = id;
 		this.email = email;
 		this.password = password;
-		this.emailVerified = emailVerified;
+		
 	}
 
 	public int getId() {
@@ -60,12 +75,22 @@ public class User {
 		this.password = password;
 	}
 
-	public int isEmailVerified() {
-		return emailVerified;
+	public String getPasswordRepeat() {
+		return passwordRepeat;
 	}
 
-	public void setEmailVerified(int emailVerified) {
-		this.emailVerified = emailVerified;
+	public void setPasswordRepeat(String passwordRepeat) {
+		this.passwordRepeat = passwordRepeat;
 	}
+
+	public LocalDate getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDate createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	
 	
 }

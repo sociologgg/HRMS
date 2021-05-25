@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.ProfessionService;
+import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.entities.concretes.Profession;
 
 @RestController
@@ -24,7 +25,7 @@ public class ProfessionsController {
 		}
 		
 		@GetMapping("/getall")
-		public List<Profession> getAll() {
+		public DataResult<List<Profession>> getAll() {
 			return this.professionService.getAll();
 			
 			

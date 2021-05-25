@@ -4,14 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="employers")
-public class Employer {
+@PrimaryKeyJoinColumn(name="userid", referencedColumnName = "id")
+public class Employer extends User{
 
 	@Id
-	@GeneratedValue
 	@Column(name="UserID")
 	private int id;
 	
