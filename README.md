@@ -1,4 +1,5 @@
-# HRMS : new generation human resources platform
+# HRMS : new generation human resources management system
 
-different user classes haven't extended the main 'user' class yet.
+
+
 
