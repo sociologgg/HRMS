@@ -1,15 +1,21 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="employers")
 @PrimaryKeyJoinColumn(name="userid", referencedColumnName = "id")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdverts"})
 public class Employer extends User{
 
 	@Id
@@ -24,6 +30,9 @@ public class Employer extends User{
 	
 	@Column(name="Phone")
 	private String phone;
+	
+	@OneToMany(mappedBy = "employer")
+	private List<JobAdt> jobAdverts;
 	
 	public Employer() {}
 
