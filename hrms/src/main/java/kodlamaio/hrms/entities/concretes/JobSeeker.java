@@ -5,10 +5,13 @@ package kodlamaio.hrms.entities.concretes;
 
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -20,9 +23,9 @@ import javax.persistence.Table;
 
 public class JobSeeker extends User{
 	
-//	@Id
-//	@Column(name = "userid")
-//	private int id;
+	//@Id
+	//@Column(name = "userid")
+	//private int id;
 
 	@Column(name = "FirstName")
 	private String firstName;
@@ -36,6 +39,8 @@ public class JobSeeker extends User{
 	@Column(name="BirthDate")
 	private Date birthDate;
 	
+	@OneToMany(mappedBy = "jobseeker")
+	private List<JobSeekerCv> JobSeekerCvs;
 	
 	
 	public JobSeeker() {}
